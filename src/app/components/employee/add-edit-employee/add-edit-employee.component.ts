@@ -20,7 +20,7 @@ export class AddEditEmployeeComponent implements OnInit {
   action: string = '';
   employee_success: string;
   hidde_button: boolean = false;
-  disabled = true;
+  disabled_element = false;
   constructor(
     private countriesService: CountriesService,
     private employeeService: EmployeeService,
@@ -43,6 +43,7 @@ export class AddEditEmployeeComponent implements OnInit {
     this.employee_id = +this.aRoute.snapshot.paramMap.get('id');
     if (this.aRoute.snapshot.paramMap.get('username')) {
       this.hidde_button = true;
+      this.disabled_element = true;
     }
   }
 
