@@ -34,3 +34,7 @@
 #area {
   height: 45px;
 }
+
+.text-danger {
+  font-size: 12px;
+}

@@ -20,6 +20,7 @@ export class AddEditEmployeeComponent implements OnInit {
   action: string = '';
   employee_success: string;
   hidde_button: boolean = false;
+  disabled = true;
   constructor(
     private countriesService: CountriesService,
     private employeeService: EmployeeService,
