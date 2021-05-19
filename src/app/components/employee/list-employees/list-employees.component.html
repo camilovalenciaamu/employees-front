@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-6 title-employee">Listado de empleados</div>
+  <div class="col-lg-6 d-flex justify-content-end">
+    <button mat-raised-button color="primary" routerLink="/agregar-empleado">Agregar empleado</button>
+  </div>
+  <mat-form-field>
+    <mat-label>Buscar empleado</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 " matSort>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre (cargo) </th>
+      <td mat-cell *matCellDef="let employee">
+        {{employee.name}}
+        <br>
+        {{employee.current_position}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Edad </th>
+      <td mat-cell *matCellDef="let employee"> {{calculateAge(employee.date_of_birth)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hiring_date">
+      <th mat-header-cell *matHeaderCellDef> Fecha de contratación </th>
+      <td mat-cell *matCellDef="let employee"> {{employee.hiring_date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+      <td mat-cell *matCellDef="let employee">
+
+        <button routerLink="/editar-empleado/{{employee.id}}" mat-mini-fab color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button routerLink="/detalle-empleado/{{employee.id}}/{{employee.username}}" mat-mini-fab color="basic">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button (click)="deleteEmployee(employee.id)" mat-mini-fab color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

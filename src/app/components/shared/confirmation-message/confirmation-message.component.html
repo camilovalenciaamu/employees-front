@@ -1,0 +1,8 @@
+<h1 class="center" mat-dialog-title>Confirmar eliminación</h1>
+<div class="center" mat-dialog-content>
+  <p>{{message}}</p>
+</div>
+<div class="center" :cr:cr mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="btn" cdkFocusInitial>Sí</button>
+</div>

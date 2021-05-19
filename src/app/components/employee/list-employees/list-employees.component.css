@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mat-form-field {
+  font-size: 18px;
+  width: 400px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+button {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+th.mat-header-cell {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.title-employee {
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mat-raised-button {
+  font-size: 15px;
+  font-weight: bold;
+}

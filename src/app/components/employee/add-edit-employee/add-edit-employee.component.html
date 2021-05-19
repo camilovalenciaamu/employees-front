@@ -1,0 +1,86 @@
+<div class="principal">
+  <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee(employeeForm.value)">
+    <div class="row ">
+      <div class="col-lg-12 new-employee">{{action}} empleado</div>
+      <div class="col-md-6 row">
+        <label for="name" class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-md-6  mb-2 ">
+          <input formControlName="name" type="text" class="form-control" id="name">
+        </div>
+      </div>
+      <div class="col-md-6 row mb-4">
+        <label for="area" class="col-sm-3 col-form-label">Área</label>
+        <div class="col-md-5  mb-2 ">
+          <mat-button-toggle-group formControlName="area" id="area" name="area" #getArea="matButtonToggleGroup"
+            (click)="getSelectedArea(getArea.value)">
+            <mat-button-toggle value="Administrativa">Administrativa</mat-button-toggle>
+            <mat-button-toggle value="Tecnología">Tecnología</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+
+      <div class="col-md-6 row mb-4">
+        <label for="date_of_birth" class="col-sm-3 col-form-label">Fecha de nacimiento</label>
+        <div class="col-md-6  mb-2 ">
+          <input formControlName="date_of_birth" type="date" max="2002-01-02" class="form-control" id="date_of_birth">
+        </div>
+      </div>
+      <div class="col-md-6 row mb-4">
+        <label for="current_position" class="col-sm-3 col-form-label">Cargo</label>
+        <div class="col-md-6  mb-2 ">
+          <select #current_position formControlName="current_position" (change)="hasCommission(current_position.value)"
+            class="form-select  mb-3" id="current_position">
+            <option value="">Selecciona un cargo</option>
+            <option value="{{position}}" *ngFor="let position of current_positions">
+              {{position}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 row mb-4">
+        <label for="country" class="col-sm-3 col-form-label">País</label>
+        <div class="col-md-6  mb-2 ">
+          <select formControlName="country" class="form-select  mb-3" id="country">
+            <option value="">Selecciona un país</option>
+            <option value="{{country.name}}" *ngFor="let country of countries">
+              {{country.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="has_commission" class="col-md-6 row mb-4">
+        <label for="commission" class="col-sm-3 col-form-label">% Comisión</label>
+        <div class="col-md-6  mb-2 ">
+          <input formControlName="commission" type="number" class="form-control" id="commission">
+        </div>
+      </div>
+      <div class="col-md-6 row mb-4">
+        <label for="username" class="col-sm-3 col-form-label">Nombre de usuario</label>
+        <div class="col-md-6  mb-2 ">
+          <input formControlName="username" type="text" class="form-control" id="username">
+        </div>
+      </div>
+      <div class="col-md-6 row mb-4">
+        <label for="hiring_date" class="col-sm-3 col-form-label">Fecha de contratación</label>
+        <div class="col-md-6  mb-2 ">
+          <input formControlName="hiring_date" type="date" class="form-control" id="hiring_date">
+        </div>
+      </div>
+      <div class="col-md-6 row mb-5 ">
+        <label class="form-check-label" for="status">Estado</label>
+        <div class="col-md-6  form-check form-switch">
+          <input formControlName="status" class="form-check-input" type="checkbox" id="status">
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="custom-button" routerLink="/" mat-raised-button>
+            < Atrás</button>
+              <button *ngIf="!hidde_button" type="submit" class="custom-button save" mat-raised-button
+                color="primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
